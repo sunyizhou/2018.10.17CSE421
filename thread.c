@@ -350,7 +350,7 @@ thread_get_priority (void)
 
 /* Sets the current thread's nice value to NICE. */
 void
-thread_set_nice (int nice UNUSED) 
+thread_set_nice (int nice)
 {
   /* implemented. */
   thread_current ()->nice = nice;
@@ -373,7 +373,7 @@ int
 thread_get_load_avg (void) 
 {
   /* Implemented. */
-  return DC_ROUND(FP_MULT_MIX (load_avg, 100));
+  return DC_ROUND(DC_MULTWITHINT (load_avg, 100));
 }
 
 /* Returns 100 times the current thread's recent_cpu value. */
